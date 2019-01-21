@@ -1,0 +1,44 @@
+
+{% extends 'backweb/base_main.html' %}
+
+{% block title %}
+    博客管理后台首页
+{% endblock %}
+
+
+{% block content %}
+<body class="user-select">
+<section class="container-fluid">
+  <div class="row">
+    <aside class="col-sm-3 col-md-2 col-lg-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li class="active"><a href="/backweb/index">信息</a></li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li><a href="/backweb/article">文章</a></li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li class=""><a href="/backweb/category">栏目</a></li>
+      </ul>
+    </aside>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-lg-10 col-md-offset-2 main" id="main">
+      <h1 class="page-header">信息总览</h1>
+      <div class="row placeholders">
+        <div class="col-xs-6 col-sm-3 placeholder">
+          <h4>文章</h4>
+          <span class="text-muted">{{ art.count }}</span> </div>
+      </div>
+      <h1 class="page-header">状态</h1>
+      <div class="table-responsive">
+        <table class="table table-striped table-hover">
+          <tbody>
+            <tr>
+              <td>登录者: <span>{{ user.get.username }}</span>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

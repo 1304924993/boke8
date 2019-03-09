@@ -41,7 +41,15 @@ class Column(models.Model):
         db_table = 'column_article'
 
 
+from django.db import models
 
 
+# Create your models here.
 
 
+class Com(models.Model):
+    com = models.CharField(max_length=1200)
+    creat_time = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        db_table = 'c'

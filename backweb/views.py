@@ -1,13 +1,12 @@
 from django.contrib.auth.hashers import make_password, check_password
 from django.core.paginator import Paginator
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
-
 # Create your views here.
 from django.urls import reverse
 
 from backweb.form import AddArtForm, EddArtForm
 from backweb.models import User, Articles, Column
-from django.http import HttpResponseRedirect
 
 
 def register(request):
@@ -55,7 +54,7 @@ def index(request):
 def article(request):
     if request.method == 'GET':
         page = int(request.GET.get('page', 1))
-        articles = Articles.objects.all()
+        articles = Articles.objects.all()[::-1]
         paginator = Paginator(articles, 3)
         page = paginator.page(page)
         return render(request, 'backweb/article.html', {'page':page})

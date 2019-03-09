@@ -16,12 +16,18 @@ Including another URLconf
 
 from django.conf.urls import url, include
 from django.contrib.staticfiles.urls import static
+from django.views.static import serve
 
-from boke8.settings import MEDIA_URL, MEDIA_ROOT
+from boke8.settings import MEDIA_URL, MEDIA_ROOT, STATICFILES_DIRS
+from web import views
 
 urlpatterns = [
     url(r'^web/', include('web.urls', namespace='web')),
     url(r'^backweb/', include('backweb.urls', namespace='backweb')),
+
+    url(r'^static/(?P<path>.*)$', serve, {"document_root": STATICFILES_DIRS[0]}),
+    url(r'^media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}),
+    url('', views.index)
 ]
 
 urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)

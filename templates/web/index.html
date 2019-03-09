@@ -119,8 +119,7 @@
         <h2>推荐文章</h2>
         <ol>
           {% for i in a %}
-          <li><span><strong>{{ forloop.counter }}</strong></span><a href="{% url 'web:article' i.id %}">{{ i.title
-            }}</a></li>
+          <li><span><strong>{{ forloop.counter }}</strong></span><a href="{% url 'web:article' i.id %}">{{ i.title }}</a></li>
           {% endfor %}
           <!--<li><span><strong>2</strong></span><a href="/">励志人生-要做一个潇洒的女人</a></li>-->
           <!--<li><span><strong>3</strong></span><a href="/">女孩都有浪漫的小情怀——浪漫的求婚词</a></li>-->

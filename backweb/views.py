@@ -1,12 +1,13 @@
 from django.contrib.auth.hashers import make_password, check_password
 from django.core.paginator import Paginator
-from django.http import HttpResponseRedirect
 from django.shortcuts import render
+
 # Create your views here.
 from django.urls import reverse
 
 from backweb.form import AddArtForm, EddArtForm
 from backweb.models import User, Articles, Column
+from django.http import HttpResponseRedirect
 
 
 def register(request):

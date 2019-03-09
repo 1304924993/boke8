@@ -1,6 +1,7 @@
 from django.core.paginator import Paginator
-from django.http import HttpResponseRedirect
 from django.shortcuts import render
+
+from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 from backweb.models import Articles, Com
@@ -17,7 +18,7 @@ def index(request):
         page = paginator.page(page)
         com = Com.objects.all()[::-1]
         a = Articles.objects.all()
-        return render(request, 'web/index.html', {'page': page, 'comm': com, 'a': a})
+        return render(request, 'web/index.html', {'page':page, 'comm': com, 'a': a})
 
 
 def view(request):
@@ -31,7 +32,7 @@ def article(request, id):
         com = Com.objects.all()[::-1]
         a = Articles.objects.all()
         art = True
-        return render(request, 'web/index.html', {'art': art, 'arts': arts, 'comm': com, 'a': a})
+        return render(request, 'web/index.html',{'art': art, 'arts': arts, 'comm': com, 'a': a})
 
 
 def comment(request):
@@ -42,6 +43,8 @@ def comment(request):
         comment = request.POST.get('comment')
         Com.objects.create(com=comment)
         return HttpResponseRedirect(reverse('web:index'))
+
+
 
 # def new(request):
 #     if request.method == 'GET':
